@@ -1,21 +1,21 @@
-package eduardohrq.rides.models.RidesUser;
+package eduardohrq.rides.models.Driver;
 
 import eduardohrq.rides.models.enums.Roles;
+import eduardohrq.rides.models.rides.Rides;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
 @Getter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class RidesUser {
+public class Driver {
     @Id
+    @Column(name = "driver_ID")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID driverID;
 
@@ -31,7 +31,12 @@ public class RidesUser {
     @Column(nullable = false, unique = true)
     private String CPF;
 
+    private String password;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Roles role;
+    private final Roles role = Roles.DRIVER;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Rides ride;
 }

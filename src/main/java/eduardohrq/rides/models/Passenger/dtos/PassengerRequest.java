@@ -1,4 +1,4 @@
-package eduardohrq.rides.models.RidesUser.dtos;
+package eduardohrq.rides.models.Passenger.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RidesUserRequest {
+public class PassengerRequest {
     private String name;
     private String email;
-    private String phone;
-    private String CPF;
 }
